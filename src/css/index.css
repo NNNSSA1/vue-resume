@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+*::after {
+  box-sizing: border-box; }
+
+*::before {
+  box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+ol, li {
+  list-style: none; }
+
+#app {
+  display: flex;
+  height: 100vh;
+  font-size: 18px;
+  overflow: hidden; }
+  #app aside {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border: 1px solid #ddd; }
+    #app aside button {
+      font-size: 18px;
+      padding: 10px; }
+    #app aside .upButton li {
+      margin: 10px 0; }
+    #app aside .downButton button {
+      margin-bottom: 10px; }
+  #app main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    overflow: auto; }
+    #app main .mainInner {
+      text-align: center;
+      max-width: 800px; }
+      #app main .mainInner section {
+        padding: 50px; }
+      #app main .mainInner .skill .skillList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; }
+        #app main .mainInner .skill .skillList li {
+          border: 1px solid red;
+          margin: 20px 0;
+          width: 48%; }
+      #app main .mainInner .production .productionList li {
+        text-align: left;
+        border: 1px solid red;
+        margin: 20px 0; }
+        #app main .mainInner .production .productionList li header {
+          display: flex;
+          align-items: center; }
+        #app main .mainInner .production .productionList li .productionIntro {
+          display: flex;
+          flex-grow: 1;
+          justify-content: space-between; }
