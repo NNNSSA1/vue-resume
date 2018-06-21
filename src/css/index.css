@@ -1,7 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: 'Monaco'; }
 
 *::after {
   box-sizing: border-box; }
@@ -19,21 +20,29 @@ a {
 ol, li {
   list-style: none; }
 
+div[v-cloak] {
+  display: none; }
+
 #app {
   display: flex;
-  height: 100vh;
-  font-size: 18px;
-  overflow: hidden; }
+  font-size: 18px; }
   #app aside {
+    position: fixed;
+    height: 100%;
     width: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    border: 1px solid #ddd; }
+    background-color: #2c2e36; }
     #app aside button {
-      font-size: 18px;
-      padding: 10px; }
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      color: white;
+      border-radius: 10px;
+      background-color: #2c2e36;
+      outline: none; }
     #app aside .upButton li {
       margin: 10px 0; }
     #app aside .downButton button {
@@ -42,12 +51,31 @@ ol, li {
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    overflow: auto; }
+    overflow: auto;
+    background-color: #ebedf3; }
+    #app main h2 {
+      padding: 20px; }
     #app main .mainInner {
       text-align: center;
-      max-width: 800px; }
+      max-width: 800px;
+      height: 100%;
+      background-color: white;
+      border: 1px solid red; }
       #app main .mainInner section {
         padding: 50px; }
+      #app main .mainInner .resume .editSpan {
+        position: relative; }
+        #app main .mainInner .resume .editSpan button {
+          position: absolute;
+          left: 100%;
+          top: 12%;
+          white-space: nowrap;
+          display: none;
+          z-index: 1; }
+      #app main .mainInner .resume .editSpan:hover button {
+        display: block; }
+      #app main .mainInner .resume #resume-name button {
+        top: 36%; }
       #app main .mainInner .skill .skillList {
         display: flex;
         flex-wrap: wrap;
@@ -58,7 +86,6 @@ ol, li {
           width: 48%; }
       #app main .mainInner .production .productionList li {
         text-align: left;
-        border: 1px solid red;
         margin: 20px 0; }
         #app main .mainInner .production .productionList li header {
           display: flex;
@@ -67,3 +94,90 @@ ol, li {
           display: flex;
           flex-grow: 1;
           justify-content: space-between; }
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 500px;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px 0px #000;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center; }
+  .login .signUpForm {
+    position: relative;
+    width: 100%;
+    background-color: #ED2855; }
+    .login .signUpForm .formUp {
+      margin-top: 80px;
+      margin-left: 40px; }
+      .login .signUpForm .formUp h2 {
+        padding: 20px 0;
+        color: #fff; }
+      .login .signUpForm .formUp input {
+        width: 100%;
+        height: 60px;
+        border: none;
+        font-size: 16px;
+        outline: none;
+        border-bottom: 1px solid #fff;
+        background-color: #ED2855;
+        color: #fff; }
+      .login .signUpForm .formUp input::-webkit-input-placeholder {
+        color: #fff; }
+      .login .signUpForm .formUp .closeSign {
+        color: #fff; }
+      .login .signUpForm .formUp .action {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 40px auto; }
+        .login .signUpForm .formUp .action input {
+          border: 3px solid white;
+          color: white;
+          margin-right: 40px;
+          width: 200px;
+          height: 60px; }
+        .login .signUpForm .formUp .action a {
+          position: absolute;
+          bottom: 20px;
+          left: 33%;
+          color: white; }
+  .login .closeSign {
+    position: absolute;
+    top: 10px;
+    right: 10px; }
+  .login .signInForm {
+    position: relative;
+    width: 100%; }
+    .login .signInForm .formIn {
+      margin-top: 80px;
+      margin-left: 40px; }
+      .login .signInForm .formIn h2 {
+        padding: 20px 0;
+        color: #ED2855; }
+      .login .signInForm .formIn input {
+        width: 100%;
+        height: 60px;
+        border: none;
+        font-size: 16px;
+        outline: none;
+        border-bottom: 1px solid #ddd; }
+      .login .signInForm .formIn .action {
+        text-align: center;
+        margin: 40px auto; }
+        .login .signInForm .formIn .action input {
+          border: 3px solid #ED2855;
+          background-color: #fff;
+          color: #ED2855;
+          margin-right: 40px;
+          width: 200px;
+          height: 60px; }
+        .login .signInForm .formIn .action a {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          margin-left: -40px;
+          color: #ED2855; }
