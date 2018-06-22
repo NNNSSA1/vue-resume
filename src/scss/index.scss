@@ -325,3 +325,16 @@ div[v-cloak]{display: none;}
         right: 0;
     }
 }
+
+.quitpreview{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    span{
+        padding: 10px;
+        color: white;
+        border: 1px solid #ED2855;
+        background-color: #ED2855;
+        border-radius: 10px;
+    }
+}

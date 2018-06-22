@@ -266,3 +266,14 @@ div[v-cloak] {
     position: absolute;
     top: 0;
     right: 0; }
+
+.quitpreview {
+  position: absolute;
+  top: 20px;
+  right: 20px; }
+  .quitpreview span {
+    padding: 10px;
+    color: white;
+    border: 1px solid #ED2855;
+    background-color: #ED2855;
+    border-radius: 10px; }
