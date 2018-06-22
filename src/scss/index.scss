@@ -7,7 +7,6 @@ ol,li{list-style: none;}
 div[v-cloak]{display: none;}
 #app{
     display: flex;
-    font-size: 18px;
     aside{
         position: fixed;
         height: 100%;
@@ -17,7 +16,6 @@ div[v-cloak]{display: none;}
         justify-content: space-between;
         text-align: center;
         background-color: #2c2e36;
-
         button{
             font-size: 16px;
             padding: 10px;
@@ -52,65 +50,149 @@ div[v-cloak]{display: none;}
             max-width: 800px;
             height: 100%;
             background-color: white;
-            border: 1px solid red;
             section{
                 padding: 50px;
-            }
-            .resume{
-                .editSpan{
-                    position: relative;
-                    button{
-                        position: absolute;
-                        left: 100%;
-                        top: 12%;
-                        white-space: nowrap;
-                        display: none;
-                        z-index: 1;
-                    }
-                }
-                .editSpan:hover{
-                    button{
-                        display: block;
-                    }
-                }
-                #resume-name{
-                    button{
-                        top: 36%;
-                    }
-                }
-            }
-            .skill{
-               .skillList{
-                   display: flex;
-                   flex-wrap: wrap;
-                   justify-content: space-between;
-                   li{
-                    border: 1px solid red;
-                        margin: 20px 0;
-                       width: 48%;
-                   }
-               } 
-            }
-            .production{
-                .productionList{
-                    li{
-                        text-align: left;
-                        margin: 20px 0;
-                        header{
-                            display: flex;
-                            align-items: center;
-                        }
-                        .productionIntro{
-                            display: flex;
-                            flex-grow: 1;
-                            justify-content: space-between;
-                        }
-                    }
-                }
             }
         }
     }
 }
+
+
+
+.resume{
+    .editSpan{
+        position: relative;
+        button{
+            position: absolute;
+            left: 100%;
+            top: 12%;
+            white-space: nowrap;
+            display: none;
+            z-index: 1;
+        }
+    }
+    .editSpan:hover{
+        button{
+            display: block;
+        }
+    }
+    #resume-name{
+        button{
+            top: 36%;
+        }
+    }
+}
+
+
+
+.production{
+    .productionList{
+        li{
+            position: relative;
+            text-align: left;
+            margin: 20px 0;
+            padding: 30px 0;
+            border: 1px solid #ebedf3;
+            h3{
+                font-weight: bold;
+            }
+            .editSpan{
+                position: relative;
+                padding-left: 20px;
+                input{
+                    padding: 0 5px;
+                    width: 200px;
+                    height: 40px;
+                }
+                button{
+                    position: absolute;
+                    left: 100%;
+                    top: 12%;
+                    white-space: nowrap;
+                    display: none;
+                    z-index: 1;
+                }
+            }
+            .editSpan:hover{
+                button{
+                    display: block;
+                }
+            }
+            .productionIntro{
+                display: flex;
+                flex-grow: 1;
+                justify-content: space-between;
+                padding: 10px 0;
+            }
+            .deleteProject{
+                position: absolute;
+                top:0;
+                right: 20px;
+            }
+        }
+    }
+    .addProject{
+        display: inline-block;
+        padding: 20px;
+        border:1px solid #ebedf3;
+        box-shadow: 1px 1px 3px #000;
+    }
+}
+
+
+
+.skill{
+    .skillList{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        li{
+            position: relative;
+            text-align: left;
+             border: 1px solid #ebedf3;
+             margin: 20px 0;
+             padding: 20px 0;
+             width: 48%;
+            .editSpan{
+             position: relative;
+             padding-left: 20px;
+             input{
+                 padding: 0 5px;
+                 width: 200px;
+                 height: 40px;
+             }
+             button{
+                 position: absolute;
+                 left: 100%;
+                 top: 12%;
+                 white-space: nowrap;
+                 display: none;
+                 z-index: 1;
+             }
+         }
+         .editSpan:hover{
+             button{
+                 display: block;
+             }
+         }
+         .deleteSkill{
+             position: absolute;
+             top:0;
+             right: 5px;
+         }
+        }
+    }
+    .addSkill{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span{
+            padding: 6px;
+            border:1px solid #ebedf3;
+            box-shadow: 1px 1px 3px #000;
+        }
+    } 
+ }
 
 
 .login{
@@ -216,5 +298,30 @@ div[v-cloak]{display: none;}
             }
         }
 
+    }
+}
+
+
+.sharePage{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 100px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 3px 0px #000;
+    transform: translate(-50%,-50%);
+    textarea{
+        word-break: break-all;
+        flex-grow: 1;
+        width: 400px;
+        resize: none;
+    }
+    .closeShare{
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }

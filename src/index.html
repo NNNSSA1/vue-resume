@@ -18,10 +18,10 @@
             <div class="upButton">
                 <ul>
                     <li>
-                        <button @click="onClickSave" >保存</button>
+                        <button @click="onClickSave">保存</button>
                     </li>
                     <li>
-                        <button>分享</button>
+                        <button @click="onClickShare">分享</button>
                     </li>
                     <li>
                         <button>打印</button>
@@ -32,13 +32,12 @@
                 </ul>
             </div>
             <div class="downButton">
-                <button @click="outLoginIn" v-show="currentUser.id" v-cloak>登出</button>
+                <button @click="outLoginIn" v-show="!!currentUser.objectId" v-cloak>登出</button>
             </div>
         </aside>
         <main>
             <div class="mainInner">
                 <section class="resume">
-                    {{currentUser}}
                     <h1 id="resume-name">
                         <edit-span v-bind:value='resume.name' v-on:edit="onEdit('name',$event)"></edit-span>
                     </h1>
@@ -58,25 +57,34 @@
                 <section class="skill">
                     <h2>技能</h2>
                     <ul class="skillList">
-                        <li>
-                            <P>静态页面制作，实现设计稿</P>
-                            <P>静态页面制作，实现设计稿</P>
+                        <li v-for="skill,index in resume.skills">
+                            <edit-span :value="skill.name" v-on:edit="onEdit(`skills.${index}.name`,$event)"></edit-span>
+                            <div class="description">
+                                <edit-span :value="skill.description" v-on:edit="onEdit(`skills.${index}.description`,$event)"></edit-span>
+                            </div>
+                            <span class="deleteSkill" v-if="index>=2"  @click="deleteSkill(index)">x</span>
                         </li>
+                        <div class="addSkill">
+                            <span @click="addSkill">点击添加技能</span>
+                        </div>
+  
                     </ul>
                 </section>
                 <section class="production">
                     <h2>项目经历</h2>
                     <ol class="productionList">
-                        <li>
-                            <header>
-                                <h3>我的简历</h3>
+                        <li v-for="item,index in resume.project">
+                                <h3> <edit-span v-bind:value="item.name" v-on:edit="onEdit(`project.${index}.name`,$event)"></edit-span> </h3>
                                 <div class="productionIntro">
-                                    <a href="#">点我预览</a>
-                                    <span>CSS3,jQuery,响应式</span>
+                                    <edit-span  v-bind:value="item.url" v-on:edit="onEdit(`project.${index}.url`,$event)" ></edit-span>
+                                    <edit-span  v-bind:value="item.keyword" v-on:edit="onEdit(`project.${index}.keyword`,$event)"></edit-span>
                                 </div>
-                            </header>
-                            <p>用什么什么实现有什么什么功能用什么什么实现有什么什么 功能用什么什么实现有什么什么功能么 </p>
+                            <edit-span  v-bind:value="item.content" v-on:edit="onEdit(`project.${index}.content`,$event)"></edit-span>
+                            <span class="deleteProject" v-if="index>=2"  @click="deleteProject(index)">x</span>
                         </li>
+                        <div class="addProject">
+                                <span @click="addProject">点击添加项目</span>
+                        </div>
                     </ol>
                 </section>
             </div>
@@ -116,6 +124,11 @@
                 </form>
             </div>
 
+        </div>
+        <div class="sharePage" v-show="sharePage" v-cloak>
+            <h3>请将下面的链接复制发送给你想要转发人。</h3>
+            <span class="closeShare" @click="sharePage = false">关闭</span>
+            <textarea readonly>{{shareLink}}</textarea>
         </div>
     </div>
     <script src="../vendors/av-min.js"></script>
