@@ -7,6 +7,7 @@
             signInpage: false,
             sharePage: false,
             changeTheme: false,
+            loginshow: false,
             shareLink: '请先登录',
             currentUser: {
                 objectId: '',
@@ -99,7 +100,6 @@
                 let currentUser = AV.User.current()
                 if (!currentUser) {
                     this.signInpage = true
-
                 } else {
                     this.saveResume()
                 }
@@ -115,10 +115,12 @@
             onLogin(user){
                 this.currentUser.objectId = user.objectId
                 this.currentUser.email = user.email
-                this.signInpage = false;
+                this.loginshow = true
+                this.signInpage = false
             },
             outLoginIn() { //注销
-                AV.User.logOut();
+                AV.User.logOut()
+                this.loginshow = false
                 // 现在的 currentUser 是 null 了
                 alert('注销成功')
                 window.location.reload()
@@ -140,9 +142,7 @@
                 }, (error) => {
                     console.log(error)
                 });
-            },
-
-
+            },  
             print() { //打印项目
                 window.print()
             },

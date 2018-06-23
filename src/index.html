@@ -16,7 +16,7 @@
 
 <body>
     <div id="app" class="wrapper" v-bind:class="Theme" >
-        <app-aside v-if="mode === 'edit'" :sign-inpage="signInpage"></app-aside>
+            <app-aside v-if="mode === 'edit'" :loginshow="loginshow" @save="onClickSave" @outlogin="outLoginIn"></app-aside>
         <main>
             <main-inner :mode="mode"  :display-resume="displayResume"></main-inner>
         </main>

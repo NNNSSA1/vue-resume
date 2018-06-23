@@ -1,6 +1,6 @@
 {
     Vue.component('app-aside',{
-        porps:['signUppage'],
+        props:['loginshow'],
         template:`
         <aside>
             <div class="upButton">
@@ -24,7 +24,7 @@
                 </ul>
             </div>
             <div class="downButton">
-                <button @click="$emit('outlogin')" v-show = "signUppage" v-cloak>登出</button>
+                <button  @click="$emit('outlogin')"  v-show = "loginshow" v-cloak>登出</button>
             </div>
         </aside>
         `,
