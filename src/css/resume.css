@@ -1,13 +1,19 @@
-#app main .mainInner .resume .editSpan {
-    position: relative; }
-    #app main .mainInner .resume .editSpan button {
-      position: absolute;
-      left: 100%;
-      top: 12%;
-      white-space: nowrap;
-      display: none;
-      z-index: 1; }
-  #app main .mainInner .resume .editSpan:hover button {
-    display: block; }
-  #app main .mainInner .resume #resume-name button {
-    top: 36%; }
+ .resume .editSpan {
+     position: relative;
+ }
+
+ .resume .editSpan button {
+     position: absolute;
+     left: 100%;
+     top: 12%;
+     white-space: nowrap;
+     display: none;
+     z-index: 1;
+ }
+ .resume .editSpan:hover button {
+     display: block;
+ }
+
+ .resume h1 button {
+     top: 36%;
+ }

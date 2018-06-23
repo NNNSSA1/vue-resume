@@ -2,249 +2,72 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Monaco'; }
+  font-family: 'Monaco';
+}
 
 *::after {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 *::before {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
 
 a {
   color: inherit;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
-ol, li {
-  list-style: none; }
+ol,
+li {
+  list-style: none;
+}
 
 div[v-cloak] {
-  display: none; }
+  display: none;
+}
 
-#app {
-  display: flex; }
-  #app aside {
-    position: fixed;
-    height: 100%;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    background-color: #2c2e36; }
-    #app aside button {
-      font-size: 16px;
-      padding: 10px;
-      border: 1px solid #ddd;
-      color: white;
-      border-radius: 10px;
-      background-color: #2c2e36;
-      outline: none; }
-    #app aside .upButton li {
-      margin: 10px 0; }
-    #app aside .downButton button {
-      margin-bottom: 10px; }
-  #app main {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    overflow: auto;
-    background-color: #ebedf3; }
-    #app main h2 {
-      padding: 20px; }
-    #app main .mainInner {
-      text-align: center;
-      max-width: 800px;
-      height: 100%;
-      background-color: white; }
-      #app main .mainInner section {
-        padding: 50px; }
-
-.resume .editSpan {
-  position: relative; }
-  .resume .editSpan button {
-    position: absolute;
-    left: 100%;
-    top: 12%;
-    white-space: nowrap;
-    display: none;
-    z-index: 1; }
-
-.resume .editSpan:hover button {
-  display: block; }
-
-.resume #resume-name button {
-  top: 36%; }
-
-.production .productionList li {
-  position: relative;
-  text-align: left;
-  margin: 20px 0;
-  padding: 30px 0;
-  border: 1px solid #ebedf3; }
-  .production .productionList li h3 {
-    font-weight: bold; }
-  .production .productionList li .editSpan {
-    position: relative;
-    padding-left: 20px; }
-    .production .productionList li .editSpan input {
-      padding: 0 5px;
-      width: 200px;
-      height: 40px; }
-    .production .productionList li .editSpan button {
-      position: absolute;
-      left: 100%;
-      top: 12%;
-      white-space: nowrap;
-      display: none;
-      z-index: 1; }
-  .production .productionList li .editSpan:hover button {
-    display: block; }
-  .production .productionList li .productionIntro {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between;
-    padding: 10px 0; }
-  .production .productionList li .deleteProject {
-    position: absolute;
-    top: 0;
-    right: 20px; }
-
-.production .addProject {
-  display: inline-block;
-  padding: 20px;
-  border: 1px solid #ebedf3;
-  box-shadow: 1px 1px 3px #000; }
-
-.skill .skillList {
+.wrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; }
-  .skill .skillList li {
-    position: relative;
-    text-align: left;
-    border: 1px solid #ebedf3;
-    margin: 20px 0;
-    padding: 20px 0;
-    width: 48%; }
-    .skill .skillList li .editSpan {
-      position: relative;
-      padding-left: 20px; }
-      .skill .skillList li .editSpan input {
-        padding: 0 5px;
-        width: 200px;
-        height: 40px; }
-      .skill .skillList li .editSpan button {
-        position: absolute;
-        left: 100%;
-        top: 12%;
-        white-space: nowrap;
-        display: none;
-        z-index: 1; }
-    .skill .skillList li .editSpan:hover button {
-      display: block; }
-    .skill .skillList li .deleteSkill {
-      position: absolute;
-      top: 0;
-      right: 5px; }
+}
 
-.skill .addSkill {
+.wrapper aside {
+  position: fixed;
+  height: 100%;
+  width: 100px;
   display: flex;
-  justify-content: center;
-  align-items: center; }
-  .skill .addSkill span {
-    padding: 6px;
-    border: 1px solid #ebedf3;
-    box-shadow: 1px 1px 3px #000; }
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  background-color: #2c2e36;
+}
 
-.login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  height: 500px;
-  background-color: #fff;
-  box-shadow: 1px 1px 3px 0px #000;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center; }
-  .login .signUpForm {
-    position: relative;
-    width: 100%;
-    background-color: #ED2855; }
-    .login .signUpForm .formUp {
-      margin-top: 80px;
-      margin-left: 40px; }
-      .login .signUpForm .formUp h2 {
-        padding: 20px 0;
-        color: #fff; }
-      .login .signUpForm .formUp input {
-        width: 100%;
-        height: 60px;
-        border: none;
-        font-size: 16px;
-        outline: none;
-        border-bottom: 1px solid #fff;
-        background-color: #ED2855;
-        color: #fff; }
-      .login .signUpForm .formUp input::-webkit-input-placeholder {
-        color: #fff; }
-      .login .signUpForm .formUp .closeSign {
-        color: #fff; }
-      .login .signUpForm .formUp .action {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 40px auto; }
-        .login .signUpForm .formUp .action input {
-          border: 3px solid white;
-          color: white;
-          margin-right: 40px;
-          width: 200px;
-          height: 60px; }
-        .login .signUpForm .formUp .action a {
-          position: absolute;
-          bottom: 20px;
-          left: 33%;
-          color: white; }
-  .login .closeSign {
-    position: absolute;
-    top: 10px;
-    right: 10px; }
-  .login .signInForm {
-    position: relative;
-    width: 100%; }
-    .login .signInForm .formIn {
-      margin-top: 80px;
-      margin-left: 40px; }
-      .login .signInForm .formIn h2 {
-        padding: 20px 0;
-        color: #ED2855; }
-      .login .signInForm .formIn input {
-        width: 100%;
-        height: 60px;
-        border: none;
-        font-size: 16px;
-        outline: none;
-        border-bottom: 1px solid #ddd; }
-      .login .signInForm .formIn .action {
-        text-align: center;
-        margin: 40px auto; }
-        .login .signInForm .formIn .action input {
-          border: 3px solid #ED2855;
-          background-color: #fff;
-          color: #ED2855;
-          margin-right: 40px;
-          width: 200px;
-          height: 60px; }
-        .login .signInForm .formIn .action a {
-          position: absolute;
-          bottom: 20px;
-          left: 50%;
-          margin-left: -40px;
-          color: #ED2855; }
+.wrapper aside button {
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 10px;
+  background-color: #2c2e36;
+  outline: none;
+}
+
+.wrapper aside .upButton li {
+  margin: 10px 0;
+}
+
+.wrapper aside .downButton button {
+  margin-bottom: 10px;
+}
 
 .sharePage {
   position: absolute;
@@ -255,25 +78,80 @@ div[v-cloak] {
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-shadow: 1px 1px 3px 0px #000;
-  transform: translate(-50%, -50%); }
-  .sharePage textarea {
-    word-break: break-all;
-    flex-grow: 1;
-    width: 400px;
-    resize: none; }
-  .sharePage .closeShare {
-    position: absolute;
-    top: 0;
-    right: 0; }
+  transform: translate(-50%, -50%);
+
+}
+
+.sharePage textarea {
+  border: 2px solid #ED2855;
+  word-break: break-all;
+  width: 300px;
+  height: 50px;
+  resize: none;
+  outline: none;
+}
+.sharePage h4{
+  font-weight: bold;
+  margin: 4px 0;
+}
+
+.sharePage .closeShare {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  cursor: pointer;
+}
 
 .quitpreview {
   position: absolute;
   top: 20px;
-  right: 20px; }
-  .quitpreview span {
-    padding: 10px;
-    color: white;
-    border: 1px solid #ED2855;
-    background-color: #ED2855;
-    border-radius: 10px; }
+  right: 20px;
+}
+
+.quitpreview span {
+  padding: 10px;
+  color: white;
+  border: 1px solid #ED2855;
+  background-color: #ED2855;
+  border-radius: 10px;
+}
+
+.changeTheme {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 100px;
+  box-shadow: 1px 1px 3px 0px #000;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.changeTheme button {
+  padding: 6px;
+  color: white;
+  border-radius: 10px;
+  border: white;
+  box-shadow: 1px 1px 3px 0px #000;
+  cursor: pointer;
+  outline: none;
+}
+
+.changeTheme .colorDefault {
+  background-color: white;
+  color: #000;
+}
+
+.changeTheme .colorBlueness {
+  background-color: #66CCCC;
+}
+
+.changeTheme .colorRed {
+  background-color: #ED2855;
+}

@@ -1,0 +1,7 @@
+#app aside,
+#app .addSkill,
+#app .deleteSkill,
+#app .addProject,
+#app .deleteProject{
+    display: none;
+}

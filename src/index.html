@@ -10,138 +10,35 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/resume.css">
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/print.css" media="print">
+    <link rel="stylesheet" href="./css/theme.css">
 </head>
 
 <body>
-    <div id="app">
-        <aside v-if="mode === 'edit' ">
-            <div class="upButton">
-                <ul>
-                    <li>
-                        <button @click="onClickSave">保存</button>
-                    </li>
-                    <li>
-                        <button @click="mode = 'preview'">预览</button>
-                    </li>
-                    <li>
-                        <button @click="onClickShare">分享</button>
-                    </li>
-                    <li>
-                        <button>打印</button>
-                    </li>
-                    <li>
-                        <button>换肤</button>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="downButton">
-                <button @click="outLoginIn" v-show="!!currentUser.objectId" v-cloak>登出</button>
-            </div>
-        </aside>
+    <div id="app" class="wrapper" v-bind:class="Theme" >
+        <app-aside v-if="mode === 'edit'" :sign-inpage="signInpage"></app-aside>
         <main>
-            <div class="mainInner">
-                <section class="resume">
-                    <h1 id="resume-name">
-                        <edit-span  :disabled="mode === 'preview'" v-bind:value='displayResume.name' v-on:edit="onEdit('name',$event)"></edit-span >
-                    </h1>
-                    <p>应聘职位：
-                        <edit-span  :disabled="mode === 'preview'" v-bind:value='displayResume.jobTitle' v-on:edit="onEdit('jobTitle',$event)"></edit-span>
-                    </p>
-                    <p>
-                        <edit-span  :disabled="mode === 'preview'" v-bind:value='displayResume.birthday' v-on:edit="onEdit('birthday',$event)"></edit-span>
-                        |
-                        <edit-span  :disabled="mode === 'preview'" v-bind:value='displayResume.gender' v-on:edit="onEdit('gender',$event)"></edit-span>
-                        |
-                        <edit-span  :disabled="mode === 'preview'" v-bind:value='displayResume.age' v-on:edit="onEdit('age',$event)"></edit-span>
-                        |
-                        <edit-span  :disabled="mode === 'preview'" v-bind:value='displayResume.phone' v-on:edit="onEdit('phone',$event)"></edit-span>
-                    </p>
-                </section>
-                <section class="skill">
-                    <h2>技能</h2>
-                    <ul class="skillList">
-                        <li v-for="skill,index in displayResume.skills">
-                            <edit-span  :disabled="mode === 'preview'" :value="skill.name" v-on:edit="onEdit(`skills.${index}.name`,$event)"></edit-span>
-                            <div class="description">
-                                <edit-span  :disabled="mode === 'preview'" :value="skill.description" v-on:edit="onEdit(`skills.${index}.description`,$event)"></edit-span>
-                            </div>
-                            <span class="deleteSkill" v-if="index>=2 &&mode === 'edit'" @click="deleteSkill(index)">x</span>
-                        </li>
-                        <div v-if ="mode === 'edit'"  class="addSkill">
-                            <span @click="addSkill">点击添加技能</span>
-                        </div>
-  
-                    </ul>
-                </section>
-                <section class="production">
-                    <h2>项目经历</h2>
-                    <ol class="productionList">
-                        <li v-for="item,index in displayResume.project">
-                                <h3> <edit-span  :disabled="mode === 'preview'" v-bind:value="item.name" v-on:edit="onEdit(`project.${index}.name`,$event)"></edit-span> </h3>
-                                <div class="productionIntro">
-                                    <edit-span   :disabled="mode === 'preview'" v-bind:value="item.url" v-on:edit="onEdit(`project.${index}.url`,$event)" ></edit-span>
-                                    <edit-span   :disabled="mode === 'preview'" v-bind:value="item.keyword" v-on:edit="onEdit(`project.${index}.keyword`,$event)"></edit-span>
-                                </div>
-                            <edit-span   :disabled="mode === 'preview'" v-bind:value="item.content" v-on:edit="onEdit(`project.${index}.content`,$event)"></edit-span>
-                            <span class="deleteProject"  v-if="index>=2 && mode === 'edit'"  @click="deleteProject(index)">x</span>
-                        </li>
-                        <div v-if ="mode === 'edit'"  class="addProject">
-                            <span @click="addProject">点击添加项目</span>
-                        </div>
-                    </ol>
-                </section>
-            </div>
+            <main-inner :mode="mode"  :display-resume="displayResume"></main-inner>
         </main>
-        <div class="login" v-show="loginpage" v-cloak>
-            <div class="signUpForm" v-show='signUppage'>
-                <form @submit.prevent="onSignUp" class="formUp">
-                    <h2>注册</h2>
-                    <span class="closeSign" @click="loginpage = false">关闭</span>
-                    <div class="row">
-                        <input type="text" name="phone" v-model="signUp.email" placeholder="请输入邮箱地址">
-                    </div>
-                    <div class="row">
-                        <input type="password" name="password" v-model="signUp.password" placeholder="请输入密码">
-                    </div>
-                    <div class="action">
-                        <input type="submit"></input>
-                        <a @click="signUppage = false; signInpage= true">已有账号点击登录</a>
-                    </div>
+        <login v-show='signInpage' @login="onLogin" @close-login="signInpage = false"></login>
+        <sign-up v-show='signUppage' @close-signup="signUppage=false" @gotosignup="signUppage=true"></sign-up>
+        <share :share-link="shareLink" v-show="sharePage" @close-share="sharePage = false"></share>
+        <theme v-show="changeTheme"></theme>
+        <div v-if="mode === 'preview'" class="quitpreview" @click="mode = 'edit'">
+            <span>退出预览模式 </span>
+        </div>
 
-                </form>
-            </div>
-            <div class="signInForm" v-show='signInpage'>
-                <form @submit.prevent="onLoginIn" class="formIn">
-                    <h2>登录</h2>
-                    <span class="closeSign" @click="loginpage = false">关闭</span>
-                    <div class="row">
-                        <input type="text" name="phone" v-model="loginIn.email" placeholder="请输入邮箱地址">
-                    </div>
-                    <div class="row">
-                        <input type="password" name="password" v-model="loginIn.password" placeholder="请输入密码">
-                    </div>
-                    <div class="action">
-                        <input type="submit"></input>
-                        <a @click="signUppage = true; signInpage= false">点击注册</a>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-        <div class="sharePage" v-show="sharePage" v-cloak>
-            <h3>请将下面的链接复制发送给你想要转发人。</h3>
-            <span class="closeShare" @click="sharePage = false">关闭</span>
-            <textarea readonly>{{shareLink}}</textarea>
-        </div>
-        <div v-if = "mode === 'preview'" class="quitpreview" @click="mode = 'edit'">
-            <span >退出预览模式 </span>
-        </div>
     </div>
     <script src="../vendors/av-min.js"></script>
     <script src="../vendors/vue.min.js"></script>
     <script src="./js/avInit.js"></script>
     <script src="./js/edit-span.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/share.js"></script>
+    <script src="./js/signUp.js"></script>
+    <script src="./js/theme.js"></script>
+    <script src="./js/main-inner.js"></script>
+    <script src="./js/aside.js"></script>
     <script src="./js/newVue.js"></script>
 </body>
 
