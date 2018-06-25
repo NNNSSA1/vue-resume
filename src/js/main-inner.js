@@ -1,7 +1,7 @@
 {
 
     Vue.component('main-inner',{
-        props:['mode','displayResume'],
+        props:['mode','displayResume','resume'],
         template:`
             <div class="mainInner">
                 <section class="resume">
@@ -77,6 +77,17 @@
 
             deleteProject(index) { //删除项目经验
                 app.resume.project.splice(index, 1)
+            },
+            onEdit(key, value) {
+                let arr = key.split('.')
+                let result = this.resume
+                for (let i = 0; i < arr.length; i++) {
+                    if (i === arr.length - 1) {
+                        result[arr[i]] = value
+                    } else {
+                        result = result[arr[i]]
+                    }
+                }
             },
         }
     })

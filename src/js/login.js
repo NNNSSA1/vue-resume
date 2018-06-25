@@ -25,8 +25,8 @@
             onLoginIn() { //登录
                 AV.User.logIn(this.loginIn.email, this.loginIn.password).then((user) => {
                     user = user.toJSON()
-                    alert('登录成功')
                     this.$emit('login',user)
+                    alert('登录成功')
                 }, function (error) {
                     switch (error.code) {
                         case 211:

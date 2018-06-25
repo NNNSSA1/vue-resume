@@ -7,7 +7,7 @@
             signInpage: false,
             sharePage: false,
             changeTheme: false,
-            loginshow: false,
+            logoutshow: false,
             shareLink: '请先登录',
             currentUser: {
                 objectId: '',
@@ -84,18 +84,6 @@
             }
         },
         methods: {
-            onEdit(key, value) {
-                let arr = key.split('.')
-                let result = this.resume
-                for (let i = 0; i < arr.length; i++) {
-                    if (i === arr.length - 1) {
-                        result[arr[i]] = value
-                    } else {
-                        result = result[arr[i]]
-                    }
-                }
-            },
-
             onClickSave() { //点击判断是否保存
                 let currentUser = AV.User.current()
                 if (!currentUser) {
@@ -115,19 +103,20 @@
             onLogin(user){
                 this.currentUser.objectId = user.objectId
                 this.currentUser.email = user.email
-                this.loginshow = true
+                app.logoutshow = true
                 this.signInpage = false
             },
             outLoginIn() { //注销
                 AV.User.logOut()
-                this.loginshow = false
                 // 现在的 currentUser 是 null 了
+                app.logoutshow = false
                 alert('注销成功')
                 window.location.reload()
             },
             saveResume() { //保存
                 let objectId = AV.User.current().toJSON().objectId
-                var resume = AV.Object.createWithoutData('User', objectId);
+                let resume = AV.Object.createWithoutData('User', objectId);
+                console.log(resume)
                 // 修改属性
                 resume.set('resume', this.resume);
                 // 保存到云端
@@ -154,6 +143,7 @@
     //获取当前用户的ID
     let currentUser = AV.User.current()
     if (currentUser) {
+        app.logoutshow = true
         app.currentUser = currentUser.toJSON()
         app.getResume(app.currentUser).then((resume) => {
             app.resume = resume

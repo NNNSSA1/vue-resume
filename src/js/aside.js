@@ -1,6 +1,6 @@
 {
     Vue.component('app-aside',{
-        props:['loginshow'],
+        props:['logoutshow'],
         template:`
         <aside>
             <div class="upButton">
@@ -18,13 +18,13 @@
                         <button @click="$emit('print')">打印</button>
                     </li>
                     <li>
-                        <button @click="$emit('changeTheme')">换肤</button>
+                        <button @click="$emit('changetheme')">换肤</button>
                     </li>
 
                 </ul>
             </div>
             <div class="downButton">
-                <button  @click="$emit('outlogin')"  v-show = "loginshow" v-cloak>登出</button>
+                <button  @click="$emit('outlogin')"  v-show = "logoutshow" v-cloak>登出</button>
             </div>
         </aside>
         `,
